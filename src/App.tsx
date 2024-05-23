@@ -4,7 +4,7 @@ import SearchIcon from "./search.svg";
 import MovieCard from "./MovieCard";
 
 // API key
-const API_URL = "https://www.omdbapi.com/?apikey=2b37cb5c&";
+const API_URL = import.meta.env.VITE_API_URL;
 
 interface Movie {
   Poster: string;
@@ -21,7 +21,7 @@ function App() {
   const searchMovies = async (title: string) => {
     const response = await fetch(`${API_URL}s=${title}`);
     const data = await response.json();
-    console.log(data); // Log to check the structure
+    console.log(data);
     if (data.Search) {
       setMovies(data.Search);
     }
